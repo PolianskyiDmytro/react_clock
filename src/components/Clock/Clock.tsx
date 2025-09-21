@@ -15,8 +15,6 @@ export class Clock extends React.PureComponent<Props> {
     currentTime: new Date(),
   };
 
-  timerId: number = 0;
-
   currentTimeId: number = 0;
 
   componentDidMount(): void {
@@ -44,7 +42,6 @@ export class Clock extends React.PureComponent<Props> {
   }
 
   componentWillUnmount(): void {
-    window.clearInterval(this.timerId);
     window.clearInterval(this.currentTimeId);
     document.removeEventListener('contextmenu', this.props.onContextMenu);
     document.addEventListener('click', this.props.onClick);
