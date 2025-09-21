@@ -19,11 +19,15 @@ export class App extends React.PureComponent<{}, State> {
     hasClock: true,
   };
 
-  timerId = window.setInterval(() => {
-    this.setState({
-      clockName: getRandomName(),
-    });
-  }, 3300);
+  timerId: number = 0;
+
+  componentDidMount(): void {
+    this.timerId = window.setInterval(() => {
+      this.setState({
+        clockName: getRandomName(),
+      });
+    }, 3300);
+  }
 
   handleContextMenu = (event: MouseEvent) => {
     event.preventDefault();
